@@ -1,47 +1,50 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Make a booking</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a Date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="time" placeholder="Time" />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Pick-up Address" />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Destination" />
-        </mat-form-field>
-        <p>
-            Number of Seats:
-            <mat-button-toggle-group name="numberOfSeats">
-                <mat-button-toggle value="1">One</mat-button-toggle>
-                <mat-button-toggle value="2">Two</mat-button-toggle>
-                <mat-button-toggle value="3">Three</mat-button-toggle>
-                <mat-button-toggle value="4">Four</mat-button-toggle>
-            </mat-button-toggle-group>
-        </p>
-    </mat-card-content>
-    <mat-card-header>
-        <mat-card-title>Customer's details</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Full Name" />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Phone Number" type="tel" />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Email" type="email" required />
-        </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="accent">Submit</button>
-    </mat-card-actions>
+    <form (ngSubmit)="onSubmit()" #requestForm="ngForm">
+        <mat-card-header>
+            <mat-card-title>Make a booking</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a Date" name="date"
+                    [(ngModel)]="requestDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="time" placeholder="Time" name="time" [(ngModel)]="requestTime" />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Pick-up Address" [(ngModel)]="request.pickup" name="pickup" />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Destination" [(ngModel)]="request.destination" name="destination" />
+            </mat-form-field>
+            <p>
+                Number of Seats:
+                <mat-button-toggle-group name="numberOfSeats" [(ngModel)]="request.seats" name="seats">
+                    <mat-button-toggle value="1">One</mat-button-toggle>
+                    <mat-button-toggle value="2">Two</mat-button-toggle>
+                    <mat-button-toggle value="3">Three</mat-button-toggle>
+                    <mat-button-toggle value="4">Four</mat-button-toggle>
+                </mat-button-toggle-group>
+            </p>
+        </mat-card-content>
+        <mat-card-header>
+            <mat-card-title>Customer's details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Full Name" [(ngModel)]="request.name" name="name" />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Phone Number" type="tel" [(ngModel)]="request.phone" name="phone" />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Email" type="email" [(ngModel)]="request.email" name="email" required />
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="accent" [disabled]="!requestForm.form.valid">Submit</button>
+        </mat-card-actions>
+    </form>
 </mat-card>
