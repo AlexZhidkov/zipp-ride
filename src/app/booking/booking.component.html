@@ -5,19 +5,20 @@
         </mat-card-header>
         <mat-card-content>
             <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a Date" name="date"
+                <input matInput [matDatepicker]="picker" placeholder="Choose a Date" name="date" required
                     [(ngModel)]="requestDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="time" placeholder="Time" name="time" [(ngModel)]="requestTime" />
+                <input matInput type="time" placeholder="Time" name="time" [(ngModel)]="requestTime" required />
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Pick-up Address" [(ngModel)]="request.pickup" name="pickup" />
+                <input matInput placeholder="Pick-up Address" [(ngModel)]="request.pickup" name="pickup" required />
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Destination" [(ngModel)]="request.destination" name="destination" />
+                <input matInput placeholder="Destination" [(ngModel)]="request.destination" name="destination"
+                    required />
             </mat-form-field>
             <p>
                 Number of Seats:
