@@ -27,8 +27,9 @@ export class BookingComponent implements OnInit {
 
   onSubmit() {
     this.request.ts = new Date();
+    this.request.createdOnString = this.request.ts.toString();
     this.request.time = new Date(this.requestDate.toDateString() + ' ' + this.requestTime);
-
+    this.request.timeString = this.request.time.toString();
     this.afs.collection<AppEvent>('events').add({
       event: 'Ride booking requested.',
       data: this.request

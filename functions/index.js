@@ -27,6 +27,7 @@ const APP_NAME = 'ZIPP Ride';
  * Sends an email for each new document in firestore collection.
  */
 exports.sendEmail = functions.firestore
+    .region('asia-east2')
     .document('events/{emailId}')
     .onCreate((snap, context) => {
         return sendNotificationEmail(snap.data());
@@ -41,6 +42,25 @@ async function sendNotificationEmail(event) {
 
     mailOptions.subject = event.event;
     mailOptions.text = JSON.stringify(event.data);
+    const booking = event.data;
+    mailOptions.text =
+        `Booking Time: ${booking.timeString},` +
+        `Pick-up Address: ${booking.pickup} , ` +
+        `Destination: ${booking.destination} , ` +
+        `Number of Seats: ${booking.seats} , ` +
+        `Customer Name: ${booking.name} , ` +
+        `Phone Number: ${booking.phone} , ` +
+        `Email: ${booking.email} , ` +
+        `Booking created: ${booking.createdOnString}`;
+    mailOptions.html =
+        `<p>Booking Time: ${booking.timeString} </p>` +
+        `<p>Pick-up Address: ${booking.pickup}</p>` +
+        `<p>Destination: ${booking.destination}</p>` +
+        `<p>Number of Seats: ${booking.seats}</p>` +
+        `<p>Customer Name: ${booking.name}</p>` +
+        `<p>Phone Number: ${booking.phone}</p>` +
+        `<p>Email: ${booking.email}</p>` +
+        `<p>Booking created: ${booking.createdOnString}</p>`;
 
     await mailTransport.sendMail(mailOptions);
     console.log('Notification email sent to:', emailReceiver);
