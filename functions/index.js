@@ -26,8 +26,7 @@ const APP_NAME = 'ZIPP Ride';
 /**
  * Sends an email for each new document in firestore collection.
  */
-exports.sendEmail = functions.firestore
-    .region('asia-east2')
+exports.sendEmail = functions.region('asia-east2').firestore
     .document('events/{emailId}')
     .onCreate((snap, context) => {
         return sendNotificationEmail(snap.data());
