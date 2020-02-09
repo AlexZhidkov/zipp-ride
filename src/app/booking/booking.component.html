@@ -14,11 +14,12 @@
                 <input matInput type="time" placeholder="Time" name="time" [(ngModel)]="requestTime" required />
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Pick-up Address" [(ngModel)]="request.pickup" name="pickup" required />
+                <input matInput #pickupInput placeholder="Pick-up Address" [(ngModel)]="request.pickup" name="pickup"
+                    required />
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Destination" [(ngModel)]="request.destination" name="destination"
-                    required />
+                <input matInput #destinationInput placeholder="Destination" [(ngModel)]="request.destination"
+                    name="destination" required />
             </mat-form-field>
             <p>
                 Number of Seats:
