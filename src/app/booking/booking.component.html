@@ -39,7 +39,8 @@
                 <input matInput placeholder="Full Name" [(ngModel)]="request.name" name="name" />
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Phone Number" type="tel" [(ngModel)]="request.phone" name="phone" />
+                <input matInput placeholder="Phone Number" type="tel" [(ngModel)]="request.phone" name="phone"
+                    required />
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput placeholder="Email" type="email" [(ngModel)]="request.email" name="email" required />
