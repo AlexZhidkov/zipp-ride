@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule, UserTrackingService } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormsModule } from '@angular/forms';
@@ -38,6 +39,7 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     FormsModule,
@@ -57,6 +59,7 @@ import { HomeComponent } from './home/home.component';
     MatSnackBarModule
   ],
   providers: [
+    UserTrackingService,
     { provide: MAT_DATE_LOCALE, useValue: 'en-AU' },
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ],

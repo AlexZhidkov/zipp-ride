@@ -3,6 +3,7 @@ declare var google: any;
 
 import { Time } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppEvent } from '../model/app-event';
@@ -23,6 +24,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   constructor(
     private afs: AngularFirestore,
+    private analytics: AngularFireAnalytics,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -71,11 +73,13 @@ export class BookingComponent implements OnInit, AfterViewInit {
     })
       .then(() => {
         this.snackBar.open('Your request is submitted.');
+        this.analytics.logEvent('request_submitted', { app_name: 'ZZAP' });
       })
       .catch(err => {
         this.snackBar.open(err.message, null, {
           duration: 5000
         });
+        this.analytics.logEvent('submit_failed', { app_name: 'ZZAP' });
       });
 
     this.request.pickup = null;

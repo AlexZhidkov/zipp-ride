@@ -21,7 +21,7 @@ const mailTransport = nodemailer.createTransport({
 });
 
 // Your company name to include in the emails
-const APP_NAME = 'ZIPP Ride';
+const APP_NAME = 'ZZAP';
 
 /**
  * Sends an email for each new document in firestore collection.
