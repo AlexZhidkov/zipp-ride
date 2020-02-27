@@ -4,7 +4,7 @@ declare var google: any;
 import { Time } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppEvent } from '../model/app-event';
 import { BookingRequest } from '../model/booking-request';
 
