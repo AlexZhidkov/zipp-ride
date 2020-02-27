@@ -11,8 +11,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/core": "^9.0.3",
-    "@angular-devkit/schematics": "^9.0.3",
     "@angular/animations": "~9.0.3",
     "@angular/cdk": "~9.1.0",
     "@angular/common": "~9.0.3",
@@ -25,7 +23,6 @@
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
     "@angular/service-worker": "~9.0.3",
-    "@schematics/angular": "^9.0.3",
     "@types/googlemaps": "^3.39.2",
     "firebase": "^7.8.0",
     "rxjs": "^6.5.4",
